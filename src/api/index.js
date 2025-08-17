@@ -16,7 +16,7 @@ const fetchData = async (url, config = {}) => {
 };
 
 export const getImagePath = (path, width = 300) =>
-  path ? `${IMAGE_BASE_URL}w${width}${path}` : '/assets/images/no-image.webp';
+  path ? `${IMAGE_BASE_URL}w${width}${path}` : '/no-image.webp';
 
 export const getTrendingMovies = () =>
   fetchData('/trending/movie/day?language=en-US');
