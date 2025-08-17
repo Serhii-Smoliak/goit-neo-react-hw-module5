@@ -1,0 +1,38 @@
+.header {
+  background: white;
+  padding: 16px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+}
+
+.nav a:hover {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+
+.active {
+  color: var(--primary-color);
+  background-color: rgba(25, 118, 210, 0.1);
+}
