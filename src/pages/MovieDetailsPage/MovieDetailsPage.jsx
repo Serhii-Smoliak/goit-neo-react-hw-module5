@@ -38,7 +38,7 @@ export default function MovieDetailsPage() {
         const data = await getMovieVideos(movieId);
         if (data) {
           const trailers = data.results.filter(
-            video => video.type === 'Trailer' && video.site === 'YouTube'
+            (video) => video.type === 'Trailer' && video.site === 'YouTube'
           );
           setVideos(trailers);
         }
@@ -71,7 +71,9 @@ export default function MovieDetailsPage() {
         >
           ← Go back
         </Link>
-        <div className={`${styles.container} ${mainTrailer ? styles.containerWithTrailer : ''}`}>
+        <div
+          className={`${styles.container} ${mainTrailer ? styles.containerWithTrailer : ''}`}
+        >
           <div className={styles.imageWrapper}>
             <img
               src={getImagePath(movie.poster_path, 300)}
@@ -84,7 +86,8 @@ export default function MovieDetailsPage() {
               {movie.original_title} ({releaseYear})
             </h1>
             <p>
-              User score: <span className={getRatingClass(userScore)}>{userScore}%</span>
+              User score:{' '}
+              <span className={getRatingClass(userScore)}>{userScore}%</span>
             </p>
 
             <section className="section">
@@ -116,7 +119,8 @@ export default function MovieDetailsPage() {
                 <iframe
                   width="100%"
                   height="250"
-                  src={`https://www.youtube-nocookie.com/embed/${mainTrailer.key}?rel=0&modestbranding=1&playsinline=1`}                  title={mainTrailer.name}
+                  src={`https://www.youtube-nocookie.com/embed/${mainTrailer.key}?rel=0&modestbranding=1&playsinline=1`}
+                  title={mainTrailer.name}
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

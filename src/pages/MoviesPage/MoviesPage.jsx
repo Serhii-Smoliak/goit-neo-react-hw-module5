@@ -67,7 +67,9 @@ export default function MoviesPage() {
 
       {currentSearch && (
         <h2 className={styles.searchTitle}>
-          {query ? `Search results for: "${query}"` : `Movies in genre: ${genreName}`}
+          {query
+            ? `Search results for: "${query}"`
+            : `Movies in genre: ${genreName}`}
         </h2>
       )}
 

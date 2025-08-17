@@ -16,7 +16,8 @@ export default function MovieList({ movies }) {
             <span className={styles.title}>{movie.title}</span>
             {movie.release_date && (
               <span className={styles.year}>
-                {' '}({new Date(movie.release_date).getFullYear()})
+                {' '}
+                ({new Date(movie.release_date).getFullYear()})
               </span>
             )}
           </Link>

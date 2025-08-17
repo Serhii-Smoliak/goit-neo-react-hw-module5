@@ -33,7 +33,9 @@ export const searchMovies = (query) =>
   fetchData(`/search/movie?query=${encodeURIComponent(query)}&language=en-US`);
 
 export const getMovieVideos = (id) =>
-  fetchData(`/movie/${id}/videos?language=en-US`)
+  fetchData(`/movie/${id}/videos?language=en-US`);
 
 export const getMoviesByGenre = (genreId) =>
-  fetchData(`/discover/movie?with_genres=${genreId}&language=en-US&sort_by=popularity.desc`);
+  fetchData(
+    `/discover/movie?with_genres=${genreId}&language=en-US&sort_by=popularity.desc`
+  );
