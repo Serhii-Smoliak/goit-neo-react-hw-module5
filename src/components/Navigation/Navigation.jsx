@@ -1,4 +1,3 @@
-
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import styles from './Navigation.module.css';
 
@@ -7,6 +6,7 @@ export default function Navigation() {
   const navigate = useNavigate();
 
   const isMovieDetailsPage = location.pathname.startsWith('/movies/');
+  const isHomePage = location.pathname === '/';
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -44,7 +44,7 @@ export default function Navigation() {
           </li>
         </ul>
         
-        {isMovieDetailsPage && (
+        {(isMovieDetailsPage || isHomePage) && (
           <div className={styles.searchContainer}>
             <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
               <input
