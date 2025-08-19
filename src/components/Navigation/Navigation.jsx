@@ -1,5 +1,6 @@
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import styles from './Navigation.module.css';
+import Search from '@/components/Search/Search.jsx';
 
 export default function Navigation() {
   const location = useLocation();
@@ -8,14 +9,9 @@ export default function Navigation() {
   const isMovieDetailsPage = location.pathname.startsWith('/movies/');
   const isHomePage = location.pathname === '/';
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const query = form.elements.query.value.trim();
-
-    if (!query.length) return;
-
-    navigate(`/movies?query=${encodeURIComponent(query)}`);
+  const handleSearchSubmit = (searchQuery) => {
+    if (!searchQuery.length) return;
+    navigate(`/movies?query=${encodeURIComponent(searchQuery)}`);
   };
 
   return (
@@ -43,20 +39,10 @@ export default function Navigation() {
             </NavLink>
           </li>
         </ul>
-        
+
         {(isMovieDetailsPage || isHomePage) && (
           <div className={styles.searchContainer}>
-            <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
-              <input
-                type="text"
-                name="query"
-                placeholder="Search movies..."
-                className={styles.searchInput}
-              />
-              <button type="submit" className={styles.searchButton}>
-                Search
-              </button>
-            </form>
+            <Search onSubmit={handleSearchSubmit} compact={true} />
           </div>
         )}
       </nav>

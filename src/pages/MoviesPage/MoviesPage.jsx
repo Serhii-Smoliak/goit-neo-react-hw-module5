@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { searchMovies, getMoviesByGenre } from '@/api';
 import MovieList from '@/components/MovieList/MovieList';
 import styles from './MoviesPage.module.css';
+import Search from '@/components/Search/Search.jsx';
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -37,34 +38,17 @@ export default function MoviesPage() {
     }
   }, [searchParams, query, genreId]);
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const query = form.elements.query.value;
-
-    if (!query.length) return;
+  const onSubmit = (searchQuery) => {
+    if (!searchQuery.length) return;
 
     const updatedParams = new URLSearchParams();
-    updatedParams.set('query', query);
+    updatedParams.set('query', searchQuery);
     setSearchParams(updatedParams);
   };
 
   return (
     <div className={styles.container}>
-      <form onSubmit={onSubmit} className={styles.searchForm}>
-        <input
-          type="text"
-          name="query"
-          id="query"
-          placeholder="Search movies..."
-          className={styles.searchInput}
-          defaultValue={query || ''}
-        />
-        <button type="submit" className={styles.searchButton}>
-          Search
-        </button>
-      </form>
-
+      <Search onSubmit={onSubmit} query={query} />
       {currentSearch && (
         <h2 className={styles.searchTitle}>
           {query
