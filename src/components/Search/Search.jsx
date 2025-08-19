@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './Search.module.css';
 
 export default function Search({ onSubmit, query = '', compact = false }) {
-  const [searchQuery, setSearchQuery] = useState(query || '');
+  const [searchQuery, setSearchQuery] = useState(query);
 
   const handleSubmit = (e) => {
     e.preventDefault();
