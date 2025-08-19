@@ -39,3 +39,9 @@ export const getMoviesByGenre = (genreId) =>
   fetchData(
     `/discover/movie?with_genres=${genreId}&language=en-US&sort_by=popularity.desc`
   );
+
+export const getPersonDetails = (id) =>
+  fetchData(`/person/${id}?language=en-US`);
+
+export const getPersonMovies = (id) =>
+  fetchData(`/person/${id}/movie_credits?language=en-US`);

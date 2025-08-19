@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
-
-import { useParams } from 'react-router-dom';
-
+import { useParams, Link } from 'react-router-dom';
 import styles from './MovieCast.module.css';
-
 import { getMovieCast, getImagePath } from '@/api';
 
 export default function MovieCast() {
@@ -17,7 +14,6 @@ export default function MovieCast() {
       setIsLoading(true);
       try {
         const data = await getMovieCast(movieId);
-
         setCast(data.cast);
       } catch (error) {
         setError(error.message);
@@ -31,13 +27,12 @@ export default function MovieCast() {
 
   return (
     <>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <div className={styles.loadingMessage}>Loading...</div>}
       {cast.length && !isLoading && !error.length ? (
         <ul className={styles.list}>
           {cast.map((actor) => (
-            <li key={actor.id}>
-              <p>{actor.original_name}</p>
-              <div>
+            <li key={actor.id} className={styles.castItem}>
+              <Link to={`/person/${actor.id}`} className={styles.actorLink}>
                 <img
                   src={
                     actor.profile_path
@@ -46,7 +41,11 @@ export default function MovieCast() {
                   }
                   alt={`Actor: ${actor.original_name}`}
                 />
-              </div>
+                <p className={styles.actorName}>{actor.original_name}</p>
+                {actor.character && (
+                  <p className={styles.character}>as {actor.character}</p>
+                )}
+              </Link>
             </li>
           ))}
         </ul>

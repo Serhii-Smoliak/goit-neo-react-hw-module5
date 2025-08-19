@@ -23,6 +23,16 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
+.actorLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.actorLink:hover .actorName {
+  color: #1976d2;
+}
+
 .castItem img {
   width: 100%;
   height: 180px;
@@ -31,12 +41,29 @@
   margin-bottom: 12px;
 }
 
-.castItem p {
-  margin: 0;
+.actorName {
+  margin: 0 0 4px 0;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.3;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.character {
+  margin: 0;
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.loadingMessage {
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  padding: 20px;
 }

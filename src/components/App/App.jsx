@@ -10,6 +10,9 @@ const MoviesPage = lazy(() => import('@/pages/MoviesPage/MoviesPage'));
 const MovieDetailsPage = lazy(
   () => import('@/pages/MovieDetailsPage/MovieDetailsPage')
 );
+const PersonDetailsPage = lazy(
+  () => import('@/pages/PersonDetailsPage/PersonDetailsPage')
+);
 const MovieCast = lazy(() => import('@/components/MovieCast/MovieCast'));
 const MovieReviews = lazy(
   () => import('@/components/MovieReviews/MovieReviews')
@@ -29,6 +32,7 @@ function App() {
               <Route path="cast" element={<MovieCast />} />
               <Route path="reviews" element={<MovieReviews />} />
             </Route>
+            <Route path="/person/:personId" element={<PersonDetailsPage />} />
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>
