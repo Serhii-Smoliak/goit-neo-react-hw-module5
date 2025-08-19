@@ -12,9 +12,9 @@ export default function MoviesPage() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const query = searchParams.get('query');
-  const genreId = searchParams.get('genre');
-  const genreName = searchParams.get('genreName');
+  const query = searchParams.get('query') ?? '';
+  const genreId = searchParams.get('genre') ?? '';
+  const genreName = searchParams.get('genreName') ?? '';
   const currentSearch = query || genreName;
 
   useEffect(() => {
