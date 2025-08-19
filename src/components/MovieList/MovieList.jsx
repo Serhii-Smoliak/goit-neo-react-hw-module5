@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
-import styles from './MovieList.module.css';
+import { getImagePath } from '@/api';
+import styles from '@/components/MovieList/MovieList.module.css';
 
 export default function MovieList({ movies }) {
   const location = useLocation();
@@ -13,10 +14,14 @@ export default function MovieList({ movies }) {
             state={location}
             className={styles.link}
           >
+            <img
+              src={getImagePath(movie.poster_path)}
+              alt={movie.title}
+              className={styles.poster}
+            />
             <span className={styles.title}>{movie.title}</span>
             {movie.release_date && (
               <span className={styles.year}>
-                {' '}
                 ({new Date(movie.release_date).getFullYear()})
               </span>
             )}
