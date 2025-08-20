@@ -9,6 +9,8 @@ export default function Navigation() {
   const isMovieDetailsPage = location.pathname.startsWith('/movies/');
   const isHomePage = location.pathname === '/';
 
+
+
   const handleSearchSubmit = (searchQuery) => {
     if (!searchQuery.length) return;
     navigate(`/movies?query=${encodeURIComponent(searchQuery)}`);
@@ -38,6 +40,7 @@ export default function Navigation() {
               Movies
             </NavLink>
           </li>
+
         </ul>
 
         {(isMovieDetailsPage || isHomePage) && (

@@ -45,3 +45,12 @@ export const getPersonDetails = (id) =>
 
 export const getPersonMovies = (id) =>
   fetchData(`/person/${id}/movie_credits?language=en-US`);
+
+export const getGenres = () =>
+  fetchData('/genre/movie/list?language=en-US');
+
+export const getTopRatedMovies = () =>
+  fetchData('/movie/top_rated?language=en-US&page=1');
+
+export const getSimilarMovies = (id) =>
+  fetchData(`/movie/${id}/similar?language=en-US&page=1`);

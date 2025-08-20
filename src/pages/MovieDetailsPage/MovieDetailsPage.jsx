@@ -6,11 +6,14 @@ import {
   Outlet,
   useParams,
   useLocation,
+  useOutletContext,
 } from 'react-router-dom';
 
 import styles from './MovieDetailsPage.module.css';
 
 import { getMovieDetails, getImagePath, getMovieVideos } from '@/api';
+import SimilarMovies from '@/components/SimilarMovies/SimilarMovies';
+import TabNavigation from '@/components/TabNavigation/TabNavigation';
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -19,6 +22,7 @@ export default function MovieDetailsPage() {
   const location = useLocation();
   const releaseYear = movie?.release_date.split('-')[0];
   const [error, setError] = useState('');
+  const [activeTab, setActiveTab] = useState('similar');
   const backLocation = useRef(location.state);
 
   useEffect(() => {
@@ -131,21 +135,22 @@ export default function MovieDetailsPage() {
         </div>
 
         <hr />
-        <h4>Additional information</h4>
-        <ul className={styles.additionalInfoList}>
-          <li>
-            <NavLink to="cast" state={location.state}>
-              Cast
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="reviews" state={location.state}>
-              Reviews
-            </NavLink>
-          </li>
-        </ul>
-        <hr />
-        <Outlet />
+        
+        <TabNavigation 
+          movieId={movieId} 
+          location={location.state} 
+          onTabChange={setActiveTab}
+        />
+        
+
+        {activeTab === 'similar' ? (
+          <SimilarMovies movieId={movieId} />
+        ) : (
+          <>
+            <hr />
+            <Outlet />
+          </>
+        )}
       </div>
     )
   );

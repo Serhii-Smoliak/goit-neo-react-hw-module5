@@ -1,3 +1,13 @@
+.section {
+  margin-top: 32px;
+}
+
+.section h4 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #333;
+}
+
 .list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -51,4 +61,18 @@
 .year {
   color: #666;
   font-size: 14px;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-style: italic;
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  color: #e74c3c;
+  font-style: italic;
 }

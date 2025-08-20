@@ -16,13 +16,15 @@
 
 .searchButton {
   padding: 12px 24px;
-  background: #1976d2;
+  background: #667eea;
   color: white;
   border: none;
   border-radius: 8px;
   font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
 }
 
 .compactForm {
@@ -42,25 +44,30 @@
 
 .compactButton {
   padding: 8px 16px;
-  background: #1976d2;
+  background: #667eea;
   color: white;
   border: none;
   border-radius: 6px;
   font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
 }
 
 .searchInput:focus,
 .compactInput:focus {
   outline: none;
-  border-color: #1976d2;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 .searchButton:hover,
 .compactButton:hover {
-  background: #1565c0;
+  background: #5a67d8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 @media (max-width: 768px) {

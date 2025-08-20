@@ -4,10 +4,29 @@
   padding: 20px;
 }
 
-.searchTitle {
+.header {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+  align-items: flex-start;
+}
+
+.leftSection,
+.rightSection {
+  flex: 1;
+}
+
+.searchTitle,
+.defaultTitle {
   color: #333;
   margin-bottom: 20px;
   font-size: 1.5rem;
+  text-align: center;
+}
+
+.defaultTitle {
+  color: #667eea;
+  font-weight: 600;
 }
 
 .loadingMessage {
@@ -19,4 +38,22 @@
 
 .movieList {
   margin-top: 20px;
+}
+
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .leftSection,
+  .rightSection {
+    width: 100%;
+  }
+  
+  .searchTitle,
+  .defaultTitle {
+    font-size: 1.3rem;
+  }
 }

@@ -5,7 +5,7 @@
 }
 
 .backLink {
-  color: #1976d2;
+  color: #667eea;
   text-decoration: none;
   font-size: 16px;
   margin-bottom: 30px;
@@ -97,7 +97,7 @@
   margin: 40px 0;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .header {
     flex-direction: column;

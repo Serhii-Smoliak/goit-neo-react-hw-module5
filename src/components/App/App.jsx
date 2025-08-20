@@ -13,6 +13,8 @@ const MovieDetailsPage = lazy(
 const PersonDetailsPage = lazy(
   () => import('@/pages/PersonDetailsPage/PersonDetailsPage')
 );
+
+const GenreSelector = lazy(() => import('@/components/GenreSelector/GenreSelector'));
 const MovieCast = lazy(() => import('@/components/MovieCast/MovieCast'));
 const MovieReviews = lazy(
   () => import('@/components/MovieReviews/MovieReviews')
@@ -28,6 +30,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/movies" element={<MoviesPage />} />
+    
             <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
               <Route path="cast" element={<MovieCast />} />
               <Route path="reviews" element={<MovieReviews />} />

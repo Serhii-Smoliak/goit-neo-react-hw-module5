@@ -1,0 +1,118 @@
+.tabContainer {
+  margin: 32px 0;
+}
+
+.tabContainer h4 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #333;
+}
+
+.tabs {
+  display: flex;
+  gap: 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tab {
+  flex: 1;
+  padding: 16px 24px;
+  background: transparent;
+  border: none;
+  border-right: 1px solid #e1e5e9;
+  color: #667eea;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
+}
+
+.tab:last-child {
+  border-right: none;
+}
+
+.tab:hover:not(.activeTab) {
+  background: #f8f9fa;
+  color: #5a67d8;
+}
+
+.tab.activeTab {
+  color: white;
+}
+
+.tab.activeTab:hover {
+  color: white;
+  background: transparent;
+}
+
+
+.tab:focus {
+  outline: none;
+}
+
+
+.tab:first-child {
+  animation: tabReturn 0.6s ease-out;
+}
+
+@keyframes tabReturn {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.tabs::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 33.333%;
+  height: 100%;
+  background: #667eea;
+  border-radius: var(--border-radius);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+
+.tabs[data-active-tab="cast"]::before {
+  transform: translateX(100%);
+}
+
+.tabs[data-active-tab="reviews"]::before {
+  transform: translateX(200%);
+}
+
+.tabs[data-active-tab="similar"]::before {
+  transform: translateX(0%);
+}
+
+
+.tab {
+  animation: tabSwitch 0.4s ease-out;
+}
+
+@keyframes tabSwitch {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
