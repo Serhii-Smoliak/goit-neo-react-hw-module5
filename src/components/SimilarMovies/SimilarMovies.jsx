@@ -19,9 +19,8 @@ export default function SimilarMovies({ movieId }) {
       try {
         const data = await getSimilarMovies(movieId);
         if (data && data.results) {
-          // Фильтруем фильмы без изображений
-          const moviesWithImages = data.results.filter(movie => movie.poster_path);
-          setSimilarMovies(moviesWithImages.slice(0, 6)); // Показываем максимум 6 фильмов
+                  const moviesWithImages = data.results.filter(movie => movie.poster_path);
+        setSimilarMovies(moviesWithImages.slice(0, 6));
         }
       } catch (error) {
         console.error('Error fetching similar movies:', error);

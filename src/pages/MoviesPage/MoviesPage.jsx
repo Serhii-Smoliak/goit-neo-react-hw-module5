@@ -36,7 +36,7 @@ export default function MoviesPage() {
         .catch((e) => setError(e.message))
         .finally(() => setIsLoading(false));
     } else {
-      // По умолчанию загружаем топ 40 фильмов
+  
       setIsLoading(true);
       getTopRatedMovies()
         .then((data) => setMovies(data.results.slice(0, 40)))
@@ -62,7 +62,7 @@ export default function MoviesPage() {
       updatedParams.set('genreName', genre.name);
       setSearchParams(updatedParams);
     } else {
-      // Сбрасываем параметры для показа топ 40
+      
       setSearchParams(new URLSearchParams());
     }
   };

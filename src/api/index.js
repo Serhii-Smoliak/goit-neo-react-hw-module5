@@ -54,3 +54,6 @@ export const getTopRatedMovies = () =>
 
 export const getSimilarMovies = (id) =>
   fetchData(`/movie/${id}/similar?language=en-US&page=1`);
+
+export const getMovieImages = (id) =>
+  fetchData(`/movie/${id}/images?include_image_language=en,null&language=en`);

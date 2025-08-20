@@ -14,6 +14,7 @@ import styles from './MovieDetailsPage.module.css';
 import { getMovieDetails, getImagePath, getMovieVideos } from '@/api';
 import SimilarMovies from '@/components/SimilarMovies/SimilarMovies';
 import TabNavigation from '@/components/TabNavigation/TabNavigation';
+import MovieGallery from '@/components/MovieGallery/MovieGallery';
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -133,6 +134,8 @@ export default function MovieDetailsPage() {
             </div>
           )}
         </div>
+
+        <MovieGallery movieId={movieId} />
 
         <hr />
         

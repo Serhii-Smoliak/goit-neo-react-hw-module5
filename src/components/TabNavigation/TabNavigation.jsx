@@ -5,8 +5,9 @@ import styles from './TabNavigation.module.css';
 export default function TabNavigation({ movieId, location, onTabChange }) {
   const [activeTab, setActiveTab] = useState('similar');
   const currentLocation = useLocation();
+  const navigate = useNavigate();
 
-  // Определяем активный таб на основе текущего пути
+
   useEffect(() => {
     if (currentLocation.pathname.includes('/cast')) {
       setActiveTab('cast');
