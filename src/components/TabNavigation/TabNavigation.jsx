@@ -7,22 +7,53 @@ export default function TabNavigation({ movieId, location, onTabChange }) {
   const currentLocation = useLocation();
   const navigate = useNavigate();
 
-
   useEffect(() => {
-    if (currentLocation.pathname.includes('/cast')) {
-      setActiveTab('cast');
-    } else if (currentLocation.pathname.includes('/reviews')) {
-      setActiveTab('reviews');
-    } else {
-      setActiveTab('similar');
+    // Определяем активный таб на основе текущего пути
+    const path = currentLocation.pathname;
+    let newActiveTab = 'similar'; // По умолчанию
+    
+    if (path.includes('/cast')) {
+      newActiveTab = 'cast';
+    } else if (path.includes('/reviews')) {
+      newActiveTab = 'reviews';
+    } else if (path === `/movies/${movieId}` || path === `/movies/${movieId}/`) {
+      newActiveTab = 'similar';
     }
-  }, [currentLocation.pathname, movieId]);
+    
+    setActiveTab(newActiveTab);
+    if (onTabChange) {
+      onTabChange(newActiveTab);
+    }
+  }, [currentLocation.pathname, movieId, onTabChange]);
 
   const handleTabClick = (tabName) => {
+    // Запоминаем текущую позицию скролла
+    const currentScrollY = window.scrollY;
+    
     setActiveTab(tabName);
     if (onTabChange) {
       onTabChange(tabName);
     }
+    
+    // Восстанавливаем позицию скролла после смены таба
+    setTimeout(() => {
+      window.scrollTo(0, currentScrollY);
+    }, 0);
+  };
+
+  const handleSimilarClick = () => {
+    // Запоминаем текущую позицию скролла
+    const currentScrollY = window.scrollY;
+    
+    handleTabClick('similar');
+    if (currentLocation.pathname !== `/movies/${movieId}`) {
+      navigate(`/movies/${movieId}`);
+    }
+    
+    // Восстанавливаем позицию скролла после навигации
+    setTimeout(() => {
+      window.scrollTo(0, currentScrollY);
+    }, 100);
   };
 
   return (
@@ -31,10 +62,7 @@ export default function TabNavigation({ movieId, location, onTabChange }) {
       <div className={styles.tabs} data-active-tab={activeTab}>
         <button
           className={`${styles.tab} ${activeTab === 'similar' ? styles.activeTab : ''}`}
-          onClick={() => {
-            handleTabClick('similar');
-            navigate(`/movies/${movieId}`);
-          }}
+          onClick={handleSimilarClick}
           type="button"
         >
           Similar

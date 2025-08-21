@@ -145,15 +145,16 @@ export default function MovieDetailsPage() {
           onTabChange={setActiveTab}
         />
         
-
-        {activeTab === 'similar' ? (
-          <SimilarMovies movieId={movieId} />
-        ) : (
-          <>
-            <hr />
-            <Outlet />
-          </>
-        )}
+        <div className={styles.tabContent} style={{ minHeight: '400px' }}>
+          {activeTab === 'similar' ? (
+            <SimilarMovies movieId={movieId} />
+          ) : (
+            <>
+              <hr />
+              <Outlet />
+            </>
+          )}
+        </div>
       </div>
     )
   );
