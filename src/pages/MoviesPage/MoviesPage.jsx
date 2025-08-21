@@ -96,7 +96,7 @@ export default function MoviesPage() {
 
       {isLoading && <div className={styles.loadingMessage}>Loading...</div>}
 
-      {movies.length && !error.length && !isLoading ? (
+      {movies.length > 0 && !error && !isLoading ? (
         <div className={styles.movieList}>
           <MovieList movies={movies} />
         </div>

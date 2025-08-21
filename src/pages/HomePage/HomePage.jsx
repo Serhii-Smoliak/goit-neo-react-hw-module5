@@ -26,7 +26,7 @@ export default function HomePage() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Trending today</h1>
-      {trends.length && !error.length ? (
+      {trends.length > 0 && !error ? (
         <div className={styles.movieList}>
           <MovieList movies={trends} />
         </div>
